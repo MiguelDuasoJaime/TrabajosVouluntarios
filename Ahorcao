@@ -1,0 +1,47 @@
+def cribir(lista):
+    result=""
+    for x in lista:
+        result=result+x
+    return(result)
+def cribiresp(lista):
+    result=""
+    for x in lista:
+        result=result+x+" "
+    return(result)
+def ahorcar(palabrassss):
+    import random
+    pal=random.choice(palabrassss)
+    letrasval=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z","ñ"]
+    letras=[]
+    huecos=[]
+    fallos=[]
+    for l in pal:
+        letras.append(pal) #"letras" es la palabra elegida 
+    for x in letras:
+        huecos.append("_ ") 
+    while huecos != letras:
+        print("La palabra es: [" + cribir(huecos) +"] (" +str(len(huecos))+ " letras)")
+        elecc=""
+        count=0
+        e=0
+        while elecc not in letrasval or elecc in fallos or elecc in huecos:
+            elecc=raw_input("Elige una letra: ")
+            if elecc not in letrasval:
+                print("-Ese caracter no es válido!")
+            elif elecc in fallos or elecc in huecos:
+                print("-Ya has dichos esa letra")
+        for h in letras:
+            if elecc == h:
+                huecos[count]=h
+                e=+1
+            count=+1
+        if e != 1:
+            print("La letra '"+elecc+"' no está en la palabra")
+            errores=+1
+            fallos.append(elecc)
+        print("-Tus errores son: (" + cribir(fallos)+")-Llevas " +str(errores) + " errores." )
+        if letras == huecos:  
+            print("La palabra es: [" + cribiresp(huecos) +"]Has ganando!" )
+                    
+LuisXVI=["corcho","pedro","macarrones","butano","terrorismo","nuez"]
+ahorcar(LuisXVI)
