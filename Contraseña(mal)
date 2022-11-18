@@ -1,0 +1,71 @@
+# -*- coding: cp1252 -*-
+# Contraseña con: mínimo 8 caracteres, una minúscula, una mayúscula,
+# un número, otro símbolo.
+def cont(pal,caract):
+    cont=0
+    for x in range(0,len(pal)):
+        if pal[x] in caract:
+            cont+=1
+    return(cont)
+def contnum(pal):
+    cont=0
+    for x in range(0,len(pal)):
+        try:
+            n=int(pal[x])
+            count+=1
+        except:
+            n=""
+    return(cont)
+def comprobar(ctr):
+    minus=["u","o","i","e","a","b","c","d","f","g","h","j","k","l","m","n","ñ","p","q","r","s","t","v","w","x","y","z"]
+    mayus=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    err = True
+    if cont(ctr,minus) < 1:
+        err = True
+        print("-No cumple tener minúscula")
+    if cont(ctr,mayus) < 1:
+        err = True
+        print("-No cumple tener mayúscula")
+    if contnum(ctr) < 1:
+        err = True
+        print("-No cumple tener un número")
+    if (len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr)) < 1:
+        err = True
+        print("-No cumple tener otro tipo de caracter")
+    if len(ctr) < 8:
+        print("-Debe tener más de 8 caracteres")
+        err = True
+    if err == True:
+        print("*Inténtelo de nuevo")
+        return(0)
+    else:
+        print("*La contraseña es válida")
+        ctrst=((len(ctr)-8)/5) + ((contnum(ctr)-1)/2) + ((len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr))/2)
+        return(ctrst)
+def pedircont():
+    fuerza=0
+    while fuerza == 0:
+        print("Contraseña con: mínimo 8 caracteres, una minúscula, una mayúscula, un número, y otro símbolo")
+        contr=raw_input("Introduce la contraseña: ")
+        fuerza=comprobar(contr)
+        if fuerza > 0:
+            if fuerza <= 1:
+                print("-Es una contraseña débil")
+            elif fuerza <= 2:
+                print("-Es una contraseña media")
+            elif fuerza > 2:
+                print("-Es una contraseña fuerte")
+            resp=6
+            while resp!=1 and respt!=0:
+                try:
+                    resp=int(input("Quieres quieres introducir esta contraseña? (1->Sí, 0->No)"))
+                    if resp!=1 and respt!=0:
+                        print("-Respuesta no válida-")
+                except:
+                    print("-Respuesta no válida-")
+            if resp == 1:
+                print("Que tenga un buen día")
+                return(contr)
+            else:
+                fuerza = 0
+pedircont()
