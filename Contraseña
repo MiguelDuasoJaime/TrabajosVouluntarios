@@ -10,6 +10,7 @@ def cont(pal,caract):
 def contnum(pal):
     cont=0
     for x in range(0,len(pal)):
+        n=0
         try:
             n=int(pal[x])
             cont+=1
@@ -40,7 +41,7 @@ def comprobar(ctr):
         return(0)
     else:
         print("*La contraseña es válida")
-        ctrst=((len(ctr)-8)/5) + ((contnum(ctr)-1)/2) + ((len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr))/2)
+        ctrst=((len(ctr)-8)/5) + ((contnum(ctr)-1)/3) + ((len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr))/2)
         return(ctrst)
 def pedircont():
     fuerza=0
@@ -56,10 +57,10 @@ def pedircont():
             elif fuerza > 2:
                 print("-Es una contraseña fuerte")
             resp=6
-            while resp!=1 and respt!=0:
+            while resp!=1 and resp!=0:
                 try:
-                    resp=int(input("Quieres quieres introducir esta contraseña? (1->Sí, 0->No)"))
-                    if resp!=1 and respt!=0:
+                    resp=int(input("Quieres quieres introducir esta contraseña? (1->Sí, 0->No): "))
+                    if resp!=1 and resp!=0:
                         print("-Respuesta no válida-")
                 except:
                     print("-Respuesta no válida-")
