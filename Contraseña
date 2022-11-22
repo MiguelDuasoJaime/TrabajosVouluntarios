@@ -38,18 +38,18 @@ def comprobar(ctr):
         err = True
     if err == True:
         print("*Inténtelo de nuevo")
-        return(0)
+        return(-1)
     else:
         print("*La contraseña es válida")
-        ctrst=((len(ctr)-8)/5) + ((contnum(ctr)-1)/3) + ((len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr))/2)
+        ctrst=((len(ctr)-8)/4) + ((contnum(ctr)-1)/3) + ((len(ctr)-cont(ctr,minus)-cont(ctr,mayus)-contnum(ctr))/2)
         return(ctrst)
 def pedircont():
-    fuerza=0
-    while fuerza == 0:
+    fuerza=-1
+    while fuerza == -1:
         print("Contraseña con: mínimo 8 caracteres, una minúscula, una mayúscula, un número, y otro símbolo")
         contr=raw_input("Introduce la contraseña: ")
         fuerza=comprobar(contr)
-        if fuerza > 0:
+        if fuerza > -1:
             if fuerza <= 1:
                 print("-Es una contraseña débil")
             elif fuerza <= 2:
@@ -68,5 +68,5 @@ def pedircont():
                 print("Que tenga un buen día")
                 return(contr)
             else:
-                fuerza = 0
+                fuerza = -1
 pedircont()
